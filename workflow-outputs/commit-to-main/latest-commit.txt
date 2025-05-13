@@ -1,0 +1,2 @@
+Added catch for missing folder
+
