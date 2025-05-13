@@ -15,6 +15,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Check existence of directories
+        run: |
+          if [[ ! -f "workflow-outputs/commit-to-main/latest-commit.txt" ]]; then
+            mkdir -p workflow-outputs/commit-to-main
+          fi
+
       - name: Get latest commit and write to file
         run: |
           git log -1 --pretty=%B > "workflow-outputs/commit-to-main/latest-commit.txt"
