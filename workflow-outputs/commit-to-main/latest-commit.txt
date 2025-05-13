@@ -1,2 +1,2 @@
-Added catch for missing folder
+Removed the old version of latest-commit.txt
 
