@@ -23,7 +23,7 @@ jobs:
 
       - name: Commit file if it changed
         run: |
-          git add "latest commit.txt"
+          git add "latest-commit.txt"
           git diff --cached --quiet || git commit -m "Update latest commit message"
 
       - name: Push to main (safely)
