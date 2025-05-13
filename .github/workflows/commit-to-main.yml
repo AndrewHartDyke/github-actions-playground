@@ -1,0 +1,31 @@
+name: Write Commit Message
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  write-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Get latest commit and write to file
+        run: |
+          git log -1 --pretty=%B > "latest-commit.txt"
+
+     - name: Configure Git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit file if it changed
+        run: |
+          git add "latest commit.txt"
+          git diff --cached --quiet || git commit -m "Update latest commit message"
+
+      - name: Push to main (safely)
+        if: success()
+        run: git push
