@@ -17,7 +17,7 @@ jobs:
 
       - name: Get latest commit and write to file
         run: |
-          git log -1 --pretty=%B > "latest-commit.txt"
+          git log -1 --pretty=%B > "workflow-outputs/commit-to-main/latest-commit.txt"
 
       - name: Configure Git user
         run: |
@@ -26,7 +26,7 @@ jobs:
 
       - name: Commit file if it changed
         run: |
-          git add "latest-commit.txt"
+          git add "workflow-outputs/commit-to-main/latest-commit.txt"
           git diff --cached --quiet || git commit -m "Update latest commit message"
 
       - name: Push to main (safely)
