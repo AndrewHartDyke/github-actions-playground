@@ -16,7 +16,7 @@ jobs:
         run: |
           git log -1 --pretty=%B > "latest-commit.txt"
 
-     - name: Configure Git user
+      - name: Configure Git user
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
